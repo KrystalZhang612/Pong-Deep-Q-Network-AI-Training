@@ -35,8 +35,7 @@ class QLearner(nn.Module):
             nn.Linear(512, self.num_actions)
         )
         
-        
-        
+         
     def forward(self, x):
         x = self.features(x)
         x = x.view(x.size(0), -1)
@@ -69,9 +68,7 @@ class QLearner(nn.Module):
 
     def copy_from(self, target):
         self.load_state_dict(target.state_dict())
-        
-
-
+       
         
 def compute_td_loss(model, target_model, batch_size, gamma, replay_buffer):
     state, action, reward, next_state, done = replay_buffer.sample(batch_size)
@@ -118,7 +115,6 @@ def compute_td_loss(model, target_model, batch_size, gamma, replay_buffer):
 
 
 
-
 class ReplayBuffer(object):
     def __init__(self, capacity):
         self.buffer = deque(maxlen=capacity)
@@ -142,11 +138,6 @@ class ReplayBuffer(object):
         return state, action, reward, next_state, done
     
     
-    
-
     def __len__(self):
         return len(self.buffer)
-    
-    
-    
     
