@@ -80,10 +80,6 @@ for frame_idx in range(1, num_frames + 1):
         print('Last-10 average reward: %f' % np.mean(all_rewards[-10:], 0)[1])
 
     if frame_idx % 50000 == 0:
-        target_model.copy_from(model)
-
-
-        
+        target_model.copy_from(model)      
 np.savetxt(r"rewards.csv", all_rewards, delimiter=',')
 np.savetxt(r"losses.csv", losses, delimiter=',')
-
